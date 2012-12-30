@@ -1,4 +1,4 @@
-<h1>A Node.js app that ports the <a href='http://angularjs.org/#mongolab-js' target='_blank'>AngularJS ProjectsList app</a> to use CF/local MongoDB backend(instead of Mongolab)</h1>
+<h1>A Node.js app that ports the AngularJS <a href='http://angularjs.org/#mongolab-js' target='_blank'>ProjectsList</a>  app to use CF/local MongoDB backend(instead of Mongolab)</h1>
 
 <p align="center">
 <span style='align:left'> <img src="https://raw.github.com/rajaraodv/mongoProjectsList/master/appImg0.png" height="250px" width="350px" /></span><span style='align:left'> 

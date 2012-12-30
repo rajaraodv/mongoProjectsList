@@ -1,7 +1,6 @@
 var express = require('express'),
     http = require('http'),
     path = require('path'),
-    mysql = require('mysql'),
     lib = require('./db.js');
 
 var mongodb = require('mongodb');
@@ -60,10 +59,11 @@ app.put('/project', function (req, res) {
     var b = req.body;
     var project = {name:b.name, site:b.site, description:b.description};
 
-    lib.updateProject(req.query.id, project, function (err, info) {
+    lib.updateProject(req.query._id, project, function (err, info) {
         if (err) {
             return res.json({"error":"something went wrong" + err});
         }
+        project._id = req.query._id;
         res.json(project);
     });
 });
