@@ -1,14 +1,14 @@
-<h1>A Node.js app that ports the <a href='http://angularjs.org/#mongolab-js' target='_blank'>AngularJS Todo app</a> to use CF/local MongoDB backend(instead of Mongolab)</h1>
+<h1>A Node.js app that ports the <a href='http://angularjs.org/#mongolab-js' target='_blank'>AngularJS ProjectsList app</a> to use CF/local MongoDB backend(instead of Mongolab)</h1>
 
 <p align="center">
-<span style='align:left'> <img src="https://raw.github.com/rajaraodv/mongotodo/master/appImg0.png" height="250px" width="350px" /></span><span style='align:left'> 
-<img src="https://raw.github.com/rajaraodv/mongotodo/master/appImg1.png" height="250px" width="350px" /></span>
+<span style='align:left'> <img src="https://raw.github.com/rajaraodv/mongoProjectsList/master/appImg0.png" height="250px" width="350px" /></span><span style='align:left'> 
+<img src="https://raw.github.com/rajaraodv/mongoProjectsList/master/appImg1.png" height="250px" width="350px" /></span>
 </p>
 
 #### Running it locally ####
 * Make sure you have Node.js & MongoDB running.
-* Clone the app to `mongotodo` folder
-* `cd mongotodo` folder
+* Clone the app to `mongoProjectsList` folder
+* `cd mongoProjectsList` folder
 * `npm install`
 * `node app.js`
 * open browser at `localhost:3000`
@@ -16,12 +16,12 @@
 
 #### Running it on Cloud Foundry ####
 
-* Clone the app to `mongotodo` folder
-* `cd mongotodo` folder
+* Clone the app to `mongoProjectsList` folder
+* `cd mongoProjectsList` folder
 * `npm install`
 
 ```
-> vmc push mongotodo
+> vmc push mongoProjectsList
 Instances> 1
 
 1: node
@@ -40,13 +40,13 @@ Runtime> 3  <---- Select Node.js 0.8v of runtime
 4: 512M
 Memory Limit> 64M <----- 64MB memory
 
-Creating mongotodo... OK
+Creating mongoProjectsList... OK
 
-1: mongotodo.cloudfoundry.com
+1: mongoProjectsList.cloudfoundry.com
 2: none
-URL> mongotodo.cloudfoundry.com   <---------This will be the url of your app
+URL> mongoProjectsList.cloudfoundry.com   <---------This will be the url of your app
 
-Updating mongotodo... OK
+Updating mongoProjectsList... OK
 
 Create services for application?> y
 
@@ -63,16 +63,16 @@ What kind?> 2      <--------------- Select & add MongoDB service
 Name?> mongodb-ccc0e <-- Just a name of the MongoDB service
 
 Creating service mongodb-ccc0e... OK
-Binding mongodb-ccc0e to mongotodo... OK
+Binding mongodb-ccc0e to mongoProjectsList... OK
 Create another service?> n
 
 Bind other services to application?> n
 
 Save configuration?> n
 
-Uploading mongotodo... OK
-Starting mongotodo... OK
-Checking mongotodo... OK
+Uploading mongoProjectsList... OK
+Starting mongoProjectsList... OK
+Checking mongoProjectsList... OK
 ```
 
 ### Notes ###
@@ -82,7 +82,7 @@ Checking mongotodo... OK
 
 
 ### Credits ###
- * Front-end is from <a href='http://angularjs.org/#mongolab-js' target='_blank'>AngularJS Todo app</a>
+ * Front-end is from <a href='http://angularjs.org/#mongolab-js' target='_blank'>AngularJS ProjectsList app</a>
 
 ### Copyright ###
  VMware

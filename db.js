@@ -1,25 +1,25 @@
 exports.setupDBAndTable = function (mongodb, client) {
     var ObjectID = mongodb.ObjectID;
-    var todosCollection = new mongodb.Collection(client, 'todos');
+    var projectsCollection = new mongodb.Collection(client, 'projects');
 
-    exports.addTask = function (task, callback) {
-        todosCollection.insert(task, {safe:true}, callback);
+    exports.addProject = function (project, callback) {
+        projectsCollection.insert(project, {safe:true}, callback);
     };
 
-    exports.updateTask = function (id, task, callback) {
-        todosCollection.update({_id:new ObjectID(id)}, {$set:{name:task.name, site:task.site, description:task.description}}, {safe:true}, callback);
+    exports.updateProject = function (id, project, callback) {
+        projectsCollection.update({_id:new ObjectID(id)}, {$set:{name:project.name, site:project.site, description:project.description}}, {safe:true}, callback);
     };
 
-    exports.getTasks = function (callback) {
-        todosCollection.find({}).toArray(callback);
+    exports.getProjects = function (callback) {
+        projectsCollection.find({}).toArray(callback);
     };
 
-    exports.getTask = function (id, callback) {
-        todosCollection.findOne({_id:new ObjectID(id)}, callback);
+    exports.getProject = function (id, callback) {
+        projectsCollection.findOne({_id:new ObjectID(id)}, callback);
     };
 
-    exports.deleteTask = function (id, callback) {
-        todosCollection.remove({_id:new ObjectID(id)}, callback);
+    exports.deleteProject = function (id, callback) {
+        projectsCollection.remove({_id:new ObjectID(id)}, callback);
     };
 };
 

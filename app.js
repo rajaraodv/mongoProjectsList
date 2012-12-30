@@ -6,14 +6,13 @@ var express = require('express'),
 
 var mongodb = require('mongodb');
 var server = new mongodb.Server("127.0.0.1", 27017);
-new mongodb.Db('todosDB', server, {w:1}).open(function (error, client) {
+new mongodb.Db('projectsDB', server, {w:1}).open(function (error, client) {
     if (error) throw error;
 
     lib.setupDBAndTable(mongodb, client);
 });
 
 var app = express();
-
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
     app.use(express.favicon());
@@ -30,11 +29,11 @@ app.configure('development', function () {
 });
 
 //Create
-app.post('/todo', function (req, res) {
+app.post('/project', function (req, res) {
     var b = req.body;
-    var task = {name:b.name, site:b.site, description:b.description};
+    var project = {name:b.name, site:b.site, description:b.description};
 
-    lib.addTask(task, function (err, docs) {
+    lib.addProject(project, function (err, docs) {
         if (err) {
             return res.json({"error":"something went wrong: " + err});
         }
@@ -43,36 +42,36 @@ app.post('/todo', function (req, res) {
 });
 
 //Read
-app.get('/todo', function (req, res) {
-    //if _id is passed, return that task
+app.get('/project', function (req, res) {
+    //if _id is passed, return that project
     if (req.query._id) {
-        lib.getTask(req.query._id, function (err, task) {
-            return err ? res.json(err) : res.json(task);
+        lib.getProject(req.query._id, function (err, project) {
+            return err ? res.json(err) : res.json(project);
         });
-    } else { //return all tasks
-        lib.getTasks(function (err, tasks) {
-            return err ? res.json(err) : res.json(tasks);
+    } else { //return all projects
+        lib.getProjects(function (err, projects) {
+            return err ? res.json(err) : res.json(projects);
         });
     }
 });
 
 //Update
-app.put('/todo', function (req, res) {
+app.put('/project', function (req, res) {
     var b = req.body;
-    var task = {name:b.name, site:b.site, description:b.description};
+    var project = {name:b.name, site:b.site, description:b.description};
 
-    lib.updateTask(req.query.id, task, function (err, info) {
+    lib.updateProject(req.query.id, project, function (err, info) {
         if (err) {
             return res.json({"error":"something went wrong" + err});
         }
-        res.json(task);
+        res.json(project);
     });
 });
 
 
 //Delete
-app.delete('/todo', function (req, res) {
-    lib.deleteTask(req.query._id, function (err, info) {
+app.delete('/project', function (req, res) {
+    lib.deleteProject(req.query._id, function (err, info) {
         res.json({"Error":err});
     });
 });
